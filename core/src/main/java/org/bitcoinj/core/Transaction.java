@@ -1171,7 +1171,7 @@ public class Transaction extends ChildMessage {
             }
 
             ByteArrayOutputStream bos = new UnsafeByteArrayOutputStream(32 + (tx.length == UNKNOWN_LENGTH ? 256 : tx.length + 4));
-            Sha256Hash fork_hash = Sha256Hash.wrap("0000000000000000000000000000000000000000000000000000000000000000");
+            Sha256Hash fork_hash = Sha256Hash.wrap(NetworkParameters.FORK_HASH);
             bos.write(fork_hash.getReversedBytes());
             tx.bitcoinSerialize(bos);
             // We also have to write a hash type (sigHashType is actually an unsigned char)
