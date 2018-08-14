@@ -1170,7 +1170,9 @@ public class Transaction extends ChildMessage {
                 tx.inputs.add(input);
             }
 
-            ByteArrayOutputStream bos = new UnsafeByteArrayOutputStream(tx.length == UNKNOWN_LENGTH ? 256 : tx.length + 4);
+            ByteArrayOutputStream bos = new UnsafeByteArrayOutputStream(32 + (tx.length == UNKNOWN_LENGTH ? 256 : tx.length + 4));
+            Sha256Hash fork_hash = Sha256Hash.wrap("0000000000000000000000000000000000000000000000000000000000000000");
+            bos.write(fork_hash.getReversedBytes());
             tx.bitcoinSerialize(bos);
             // We also have to write a hash type (sigHashType is actually an unsigned char)
             uint32ToByteStreamLE(0x000000ff & sigHashType, bos);
