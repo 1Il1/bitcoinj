@@ -67,7 +67,7 @@ public abstract class NetworkParameters {
     /** The string used by the payment protocol to represent unit testing (note that this is non-standard). */
     public static final String PAYMENT_PROTOCOL_ID_UNIT_TESTS = "unittest";
     public static final String PAYMENT_PROTOCOL_ID_REGTEST = "regtest";
-    /** The forkgen hash. Set this using NetworkParameters.FORK_HASH = "<your fork hash>" */
+    /** The forkgen hash. Set this using NetworkParameters.FORK_HASH = "your fork hash" */
     public static String FORK_HASH = "0000000000000000000000000000000000000000000000000000000000000000";
 
     // TODO: Seed nodes should be here as well.
